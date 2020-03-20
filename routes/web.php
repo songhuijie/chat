@@ -16,3 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/test', 'TestController@test')->name('test');
+Route::get('/chats', 'ChatController@index')->name('chat');
+Route::any('/upload', 'File\FileController@img')->name('img');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::any('/logout', 'Auth\LoginController@logout')->name('logout');

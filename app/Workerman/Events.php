@@ -2,6 +2,10 @@
 
 namespace App\Workerman;
 
+
+
+use GatewayWorker\Lib\Gateway;
+
 class Events
 {
 
@@ -11,6 +15,10 @@ class Events
 
     public static function onConnect($client_id)
     {
+        // 向当前client_id发送数据
+        Gateway::sendToClient($client_id, json_encode([
+            'clientId' => $client_id,
+        ]));
     }
 
     public static function onWebSocketConnect($client_id, $data)
